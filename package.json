@@ -1,0 +1,16 @@
+{
+  "name": "oort",
+  "version": "0.1.0",
+  "description": "Some 3d experiments",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "servez": "^1.11.0",
+    "three": "^0.126.1"
+  }
+}
