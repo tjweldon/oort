@@ -2,15 +2,26 @@
   "name": "oort",
   "version": "0.1.0",
   "description": "Some 3d experiments",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "webpack --watch --mode=development"
   },
   "keywords": [],
+  "private": true,
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.21.1",
+    "https-browserify": "^1.0.0",
+    "loadash": "^1.0.0",
+    "lodash": "^4.17.21",
     "servez": "^1.11.0",
-    "three": "^0.126.1"
+    "stream-http": "^3.1.1",
+    "three": "^0.126.1",
+    "url": "^0.11.0"
+  },
+  "devDependencies": {
+    "webpack": "^5.26.0",
+    "webpack-cli": "^4.5.0"
   }
 }
