@@ -73,10 +73,19 @@ let asteroids;
 let asteroidMeshes = []
 let asteroidTrajectories = []
 
+function padZeroLeft(number) {
+    const month = String(number)
+
+    return month.length === 1 ? "0" + month : month;
+}
+
 function setup(asteroids) {
-    console.log(asteroids["near_earth_objects"]["2021-03-15"][11])
-    for (let i = 0; i < asteroids["near_earth_objects"]["2021-03-15"].length; i++) {
-        let asteroidElement = asteroids["near_earth_objects"]["2021-03-15"];
+    const today = new Date()
+    const formattedDate = `${today.getFullYear()}-${padZeroLeft(today.getMonth() + 1)}-${padZeroLeft(today.getDate())}`
+    console.log(formattedDate)
+    console.log(asteroids["near_earth_objects"][formattedDate][11])
+    for (let i = 0; i < asteroids["near_earth_objects"][formattedDate].length; i++) {
+        let asteroidElement = asteroids["near_earth_objects"][formattedDate];
         let orbitalData = asteroidElement[i]['orbital_data'];
         asteroidTrajectories[i] = trajectory(
             Number(orbitalData["perihelion_distance"]),
@@ -135,9 +144,9 @@ function animate() {
     const delta = clock.getDelta();
     theta = theta + delta;
     for (let i = 0; i < asteroidTrajectories.length; i++) {
-        let position = asteroidTrajectories[i](100*theta)
+        let position = asteroidTrajectories[i](100 * theta)
         asteroidMeshes[i].position.set(position.x, position.y, position.z)
-        if (i === 1 ) {
+        if (i === 1) {
             console.log(position)
         }
     }
@@ -147,7 +156,7 @@ function animate() {
 
 export default function run() {
     console.log("running")
-    axios.get(`https://api.nasa.gov/neo/rest/v1/feed/today?detailed=true&api_key=${API_KEY}`).then( (resp) => {
+    axios.get(`https://api.nasa.gov/neo/rest/v1/feed/today?detailed=true&api_key=${API_KEY}`).then((resp) => {
         let data = '';
         // The whole response has been received. Print out the result.
         asteroids = resp.data;
