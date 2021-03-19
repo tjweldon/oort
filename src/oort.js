@@ -9,11 +9,12 @@ import {
     Mesh,
     MeshNormalMaterial, Quaternion
 } from 'three';
-import {planetaryOrbitRadii} from "../config/config.js"
+
+const {planetaryOrbitRadii, key} = __APP_CONFIG__
 import axios from "axios";
 
 
-const API_KEY = "ZTmr2UFLqshuuQFYHD1aOp5dyg96Bv8tsk9vgznh";
+const API_KEY = key;
 
 
 const scene = new THREE.Scene();
