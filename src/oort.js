@@ -40,7 +40,7 @@ const whiteDashedLineMat = new LineDashedMaterial({color: 0xffffff});
 
 const clock = new THREE.Clock()
 
-var theta = 0
+
 
 
 //Meshes
@@ -136,19 +136,14 @@ function trajectory(semimajor, eccentricity, orbitalPeriod, perihelionArgument, 
     return position(semimajor, semiminor, orbitalPeriod, perihelionArgument, perihelionDistance, orbitalInclination, longitudeOfAscNode, perihelionTime - epochOsculation)
 }
 
-
+let theta = 0;
 function animate() {
-    if (theta < 10) {
-        requestAnimationFrame(animate);
-    }
+    requestAnimationFrame(animate);
     const delta = clock.getDelta();
     theta = theta + delta;
     for (let i = 0; i < asteroidTrajectories.length; i++) {
         let position = asteroidTrajectories[i](100 * theta)
         asteroidMeshes[i].position.set(position.x, position.y, position.z)
-        if (i === 1) {
-            console.log(position)
-        }
     }
 
     renderer.render(scene, camera);
